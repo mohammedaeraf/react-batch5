@@ -1,11 +1,13 @@
 import "./App.css";
-import CourseList3 from "./Components/CourseList3";
+import ProductCard from "./Components/ProductCard";
 
 function App() {
   return (
-    <>
-      <CourseList3 />
-    </>
+    <div className="container my-3">
+      <div className="mx-auto">
+        <ProductCard></ProductCard>
+      </div>
+    </div>
   );
 }
 
