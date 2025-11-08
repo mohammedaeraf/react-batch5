@@ -1,11 +1,11 @@
 import "./App.css";
-import CartItem from "./Components/CartItem";
+import Counter from "./Components/Counter";
 
 function App() {
   return (
     <div className="container my-3">
       <div className="mx-auto">
-        <CartItem></CartItem>
+        <Counter></Counter>
       </div>
     </div>
   );
