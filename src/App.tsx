@@ -4,6 +4,8 @@ import Home from "./Components/Home";
 import About from "./Components/About";
 import Contact from "./Components/Contact";
 import CourseList3 from "./Components/CourseList3";
+import UserList2 from "./Components/UserList2";
+import UserDetails from "./Components/UserDetails";
 
 function App() {
   return (
@@ -43,6 +45,15 @@ function App() {
                   </Link>
                 </li>
                 <li className="nav-item">
+                  <Link
+                    className="nav-link active"
+                    aria-current="page"
+                    to="/users"
+                  >
+                    Users
+                  </Link>
+                </li>
+                <li className="nav-item">
                   <Link className="nav-link" to="/about">
                     About
                   </Link>
@@ -61,6 +72,8 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/courses" element={<CourseList3 />} />
+            <Route path="/users" element={<UserList2 />} />
+            <Route path="/users/:id" element={<UserDetails />} />
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
           </Routes>
