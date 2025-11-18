@@ -11,30 +11,6 @@ type Employee = {
   employee_age: string;
 };
 
-/**
- * Static employees shown before any fetch — keeps UI populated for demo.
- */
-const employeesStatic: Employee[] = [
-  {
-    id: 1,
-    employee_name: "Alice Johnson",
-    employee_salary: "75000",
-    employee_age: "29",
-  },
-  {
-    id: 2,
-    employee_name: "Bob Smith",
-    employee_salary: "68000",
-    employee_age: "34",
-  },
-  {
-    id: 3,
-    employee_name: "Clara Lee",
-    employee_salary: "82000",
-    employee_age: "27",
-  },
-];
-
 function EmployeeList() {
   // employees: state that will hold employees fetched from the API.
   const [employees, setEmployees] = useState<Employee[]>([]);
