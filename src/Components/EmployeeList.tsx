@@ -26,8 +26,8 @@ function EmployeeList() {
     let response = await fetch(
       "https://dummy.restapiexample.com/api/v1/employees"
     );
-    let data = await response.json();
-    setEmployees(data.data); // JavaScript Object Notation -> converts JSON string to JS objects
+    let payLoad = await response.json();
+    setEmployees(payLoad.data); // JavaScript Object Notation -> converts JSON string to JS objects
   };
 
   return (

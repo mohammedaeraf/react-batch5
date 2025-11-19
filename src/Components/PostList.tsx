@@ -5,6 +5,7 @@ import { useState } from "react";
  * Using a type helps TypeScript catch mistakes when accessing properties.
  */
 type Post = {
+  userId: number;
   id: number;
   title: string;
   body: string;
@@ -14,18 +15,23 @@ type Post = {
  * A small static list of posts used for initial UI/demo.
  * This is rendered below so the UI shows content even before fetching.
  */
+
+//JavaScript Array
 const postsStatic: Post[] = [
   {
+    userId: 1,
     id: 101,
     title: "Understanding Python in Easy Way",
     body: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Incidunt nihil, quo, unde assumenda commodi deserunt vitae earum at cumque nam est laboriosam. Dolorem itaque expedita similique a porro libero ipsam.",
   },
   {
+    userId: 1,
     id: 102,
     title: "Having Good Habits make you successful",
     body: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Incidunt nihil, quo, unde assumenda commodi deserunt vitae earum at cumque nam est laboriosam. Dolorem itaque expedita similique a porro libero ipsam.",
   },
   {
+    userId: 1,
     id: 103,
     title: "Learning helps you grow",
     body: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Incidunt nihil, quo, unde assumenda commodi deserunt vitae earum at cumque nam est laboriosam. Dolorem itaque expedita similique a porro libero ipsam.",
@@ -63,7 +69,7 @@ function PostList() {
         If you want to render fetched posts instead, replace postsStatic with posts.
       */}
       <ul className="list-group">
-        {postsStatic.map((post) => (
+        {posts.map((post) => (
           // key prop helps React identify list items for reconciliation
           <li key={post.id} className="list-group-item">
             <h4 className="text-primary mb-2">{post.title}</h4>

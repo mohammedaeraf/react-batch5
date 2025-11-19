@@ -8,6 +8,7 @@ import UserList2 from "./Components/UserList2";
 import UserDetails from "./Components/UserDetails";
 import PostList from "./Components/PostList";
 import EmployeeList from "./Components/EmployeeList";
+import Counter from "./Components/Counter";
 
 function App() {
   return (
@@ -74,15 +75,11 @@ function App() {
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link" to="/about">
-                    About
+                  <Link className="nav-link" to="/counter">
+                    Counter
                   </Link>
                 </li>
-                <li className="nav-item">
-                  <Link className="nav-link" to="/contact">
-                    Contact
-                  </Link>
-                </li>
+              
               </ul>
             </div>
           </div>
@@ -96,7 +93,7 @@ function App() {
             <Route path="/posts" element={<PostList />} />
             <Route path="/employees" element={<EmployeeList />} />
             <Route path="/users/:id" element={<UserDetails />} />
-            <Route path="/about" element={<About />} />
+            <Route path="/counter" element={<Counter />} />
             <Route path="/contact" element={<Contact />} />
           </Routes>
         </main>
