@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 /**
  * Employee type describes the shape of an employee object.
@@ -30,14 +30,13 @@ function EmployeeList() {
     setEmployees(payLoad.data); // JavaScript Object Notation -> converts JSON string to JS objects
   };
 
+  useEffect(() => {
+    fetchEmployees();
+  }, []); // empty dependency array means this runs once on mount
+
   return (
     <div className="container mb-4">
       <h2 className="text-danger my-4">Employee List</h2>
-
-      {/* Button triggers the API fetch when clicked */}
-      <button className="btn btn-success" onClick={fetchEmployees}>
-        Fetch Employees
-      </button>
 
       {/* Render fetched employees if available, otherwise the static demo list */}
       <ul className="list-group mt-3">

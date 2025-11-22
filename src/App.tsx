@@ -9,6 +9,7 @@ import UserDetails from "./Components/UserDetails";
 import PostList from "./Components/PostList";
 import EmployeeList from "./Components/EmployeeList";
 import Counter from "./Components/Counter";
+import PostList2 from "./Components/PostList2";
 
 function App() {
   return (
@@ -90,7 +91,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/courses" element={<CourseList3 />} />
             <Route path="/users" element={<UserList2 />} />
-            <Route path="/posts" element={<PostList />} />
+            <Route path="/posts" element={<PostList2 />} />
             <Route path="/employees" element={<EmployeeList />} />
             <Route path="/users/:id" element={<UserDetails />} />
             <Route path="/counter" element={<Counter />} />
