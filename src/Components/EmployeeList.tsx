@@ -11,6 +11,15 @@ type Employee = {
   employee_age: string;
 };
 
+/**
+ * Static employees shown before any fetch — keeps UI populated for demo.
+ */
+const employeesStatic: Employee[] = [
+  { id: 1, employee_name: "Alice Johnson", employee_salary: "75000", employee_age: "29" },
+  { id: 2, employee_name: "Bob Smith", employee_salary: "68000", employee_age: "34" },
+  { id: 3, employee_name: "Clara Lee", employee_salary: "82000", employee_age: "27" },
+];
+
 function EmployeeList() {
   // employees: state that will hold employees fetched from the API.
   const [employees, setEmployees] = useState<Employee[]>([]);
@@ -21,26 +30,39 @@ function EmployeeList() {
    * - handles different response shapes: { data: [...] } or direct array
    * - updates state so UI re-renders with fetched employees
    */
-
   const fetchEmployees = async () => {
-    let response = await fetch(
-      "https://dummy.restapiexample.com/api/v1/employees"
-    );
-    let payLoad = await response.json();
-    setEmployees(payLoad.data); // JavaScript Object Notation -> converts JSON string to JS objects
-  };
+    try {
+      const response = await fetch("https://dummy.restapiexample.com/api/v1/employees");
+      const data = await response.json();
 
-  useEffect(() => {
-    fetchEmployees();
-  }, []); // empty dependency array means this runs once on mount
+      // API may return { status, data: [...] } or directly an array
+      if (Array.isArray(data)) {
+        setEmployees(data as Employee[]);
+      } else if (data && Array.isArray(data.data)) {
+        setEmployees(data.data as Employee[]);
+      } else {
+        // fallback: clear state or keep static list
+        console.warn("Unexpected employees response:", data);
+        setEmployees([]);
+      }
+    } catch (error) {
+      console.error("Failed to fetch employees:", error);
+      setEmployees([]); // keep UI consistent on error
+    }
+  };
 
   return (
     <div className="container mb-4">
       <h2 className="text-danger my-4">Employee List</h2>
 
+      {/* Button triggers the API fetch when clicked */}
+      <button className="btn btn-success" onClick={fetchEmployees}>
+        Fetch Employees
+      </button>
+
       {/* Render fetched employees if available, otherwise the static demo list */}
       <ul className="list-group mt-3">
-        {employees.map((emp) => (
+        {(employees.length ? employees : employeesStatic).map((emp) => (
           <li key={emp.id} className="list-group-item">
             <h5 className="text-primary mb-1">{emp.employee_name}</h5>
             <p className="mb-0">Age: {emp.employee_age}</p>
