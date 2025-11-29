@@ -11,33 +11,6 @@ type Post = {
   body: string;
 };
 
-/**
- * A small static list of posts used for initial UI/demo.
- * This is rendered below so the UI shows content even before fetching.
- */
-
-//JavaScript Array
-const postsStatic: Post[] = [
-  {
-    userId: 1,
-    id: 101,
-    title: "Understanding Python in Easy Way",
-    body: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Incidunt nihil, quo, unde assumenda commodi deserunt vitae earum at cumque nam est laboriosam. Dolorem itaque expedita similique a porro libero ipsam.",
-  },
-  {
-    userId: 1,
-    id: 102,
-    title: "Having Good Habits make you successful",
-    body: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Incidunt nihil, quo, unde assumenda commodi deserunt vitae earum at cumque nam est laboriosam. Dolorem itaque expedita similique a porro libero ipsam.",
-  },
-  {
-    userId: 1,
-    id: 103,
-    title: "Learning helps you grow",
-    body: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Incidunt nihil, quo, unde assumenda commodi deserunt vitae earum at cumque nam est laboriosam. Dolorem itaque expedita similique a porro libero ipsam.",
-  },
-];
-
 function PostList() {
   // posts: state that will hold posts fetched from the API.
   // Initially empty array so UI can update after fetch.

@@ -8,7 +8,7 @@ import UserDetails from "./Components/UserDetails";
 import EmployeeList from "./Components/EmployeeList";
 import Counter from "./Components/Counter";
 import PostList3 from "./Components/PostList3";
-import RecipeSearch from "./Components/RecipeSearch";
+import RecipePages from "./Components/RecipePages";
 
 function App() {
   return (
@@ -91,7 +91,7 @@ function App() {
             <Route path="/users" element={<UserList2 />} />
             <Route path="/posts" element={<PostList3 />} />
             <Route path="/employees" element={<EmployeeList />} />
-            <Route path="/recipes" element={<RecipeSearch />} />
+            <Route path="/recipes" element={<RecipePages />} />
             <Route path="/users/:id" element={<UserDetails />} />
             <Route path="/counter" element={<Counter />} />
             <Route path="/contact" element={<Contact />} />
