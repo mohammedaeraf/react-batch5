@@ -2,13 +2,15 @@ import { BrowserRouter as Router, Link, Route, Routes } from "react-router-dom";
 import "./App.css";
 import Home from "./Components/Home";
 import Contact from "./Components/Contact";
-import CourseList3 from "./Components/CourseList3";
 import UserList2 from "./Components/UserList2";
 import UserDetails from "./Components/UserDetails";
 import EmployeeList from "./Components/EmployeeList";
 import Counter from "./Components/Counter";
 import PostList3 from "./Components/PostList3";
 import RecipePages from "./Components/RecipePages";
+import RecipeList from "./Components/RecipeList";
+import CourseList4 from "./Components/CourseList4";
+import CourseAdd from "./Components/CourseAdd";
 
 function App() {
   return (
@@ -87,11 +89,12 @@ function App() {
         <main>
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/courses" element={<CourseList3 />} />
+            <Route path="/courses" element={<CourseList4 />} />
+            <Route path="/add-course" element={<CourseAdd />} />
             <Route path="/users" element={<UserList2 />} />
             <Route path="/posts" element={<PostList3 />} />
             <Route path="/employees" element={<EmployeeList />} />
-            <Route path="/recipes" element={<RecipePages />} />
+            <Route path="/recipes" element={<RecipeList />} />
             <Route path="/users/:id" element={<UserDetails />} />
             <Route path="/counter" element={<Counter />} />
             <Route path="/contact" element={<Contact />} />
