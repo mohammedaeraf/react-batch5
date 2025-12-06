@@ -40,7 +40,6 @@ const RegisterUser = () => {
     // ToDO: Write code to hit the Post API and send details to the server
   };
 
-  // TODO: Write code to post data to API
   let errorMessage = null;
 
   if (error) {
