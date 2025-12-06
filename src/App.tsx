@@ -7,10 +7,10 @@ import UserDetails from "./Components/UserDetails";
 import EmployeeList from "./Components/EmployeeList";
 import Counter from "./Components/Counter";
 import PostList3 from "./Components/PostList3";
-import RecipePages from "./Components/RecipePages";
 import RecipeList from "./Components/RecipeList";
 import CourseList4 from "./Components/CourseList4";
 import CourseAdd from "./Components/CourseAdd";
+import RegisterUser from "./Components/RegisterUser";
 
 function App() {
   return (
@@ -81,6 +81,11 @@ function App() {
                     Recipes
                   </Link>
                 </li>
+                <li className="nav-item">
+                  <Link className="nav-link" to="/register">
+                    Register
+                  </Link>
+                </li>
               </ul>
             </div>
           </div>
@@ -98,6 +103,7 @@ function App() {
             <Route path="/users/:id" element={<UserDetails />} />
             <Route path="/counter" element={<Counter />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/register" element={<RegisterUser />} />
           </Routes>
         </main>
       </div>
