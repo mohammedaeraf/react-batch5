@@ -11,6 +11,7 @@ import RecipeList from "./Components/RecipeList";
 import CourseList4 from "./Components/CourseList4";
 import CourseAdd from "./Components/CourseAdd";
 import RegisterUser from "./Components/RegisterUser";
+import CourseEdit from "./Components/CourseEdit";
 
 function App() {
   return (
@@ -96,6 +97,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/courses" element={<CourseList4 />} />
             <Route path="/add-course" element={<CourseAdd />} />
+            <Route path="/edit-course/:id" element={<CourseEdit />} />
             <Route path="/users" element={<UserList2 />} />
             <Route path="/posts" element={<PostList3 />} />
             <Route path="/employees" element={<EmployeeList />} />
