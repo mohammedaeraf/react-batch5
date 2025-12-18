@@ -12,13 +12,14 @@ import CourseList4 from "./Components/CourseList4";
 import CourseAdd from "./Components/CourseAdd";
 import RegisterUser from "./Components/RegisterUser";
 import CourseEdit from "./Components/CourseEdit";
+import EmployeeCard from "./Components/EmployeeCard";
 
 function App() {
   return (
     <Router>
       <div className="container my-3">
         <h1>My React Application</h1>
-        <nav className="navbar navbar-expand-lg bg-body-tertiary">
+        {/* <nav className="navbar navbar-expand-lg bg-body-tertiary">
           <div className="container-fluid">
             <a className="navbar-brand" href="#">
               FLA
@@ -90,11 +91,35 @@ function App() {
               </ul>
             </div>
           </div>
-        </nav>
+        </nav> */}
+        <EmployeeCard
+          name="John Doe"
+          position="HR Manager"
+          department="HR"
+          salary={2000}
+        >
+          <h4 className="text-secondary">More Info</h4>
+          <p className="text-muted">
+            John Doe is a Senior Employee who has been working with the company
+            for 10 years.
+          </p>
+        </EmployeeCard>
+
+        <EmployeeCard
+          name="Usman Ghani"
+          position="CEO"
+          department="Executive"
+          salary={4000}
+        >
+          <p className="text-muted">
+            Usman Ghani is the founder of the company and has led it to success
+            over the past 15 years.
+          </p>
+        </EmployeeCard>
 
         <main>
           <Routes>
-            <Route path="/" element={<Home />} />
+            <Route path="/home" element={<Home />} />
             <Route path="/courses" element={<CourseList4 />} />
             <Route path="/add-course" element={<CourseAdd />} />
             <Route path="/edit-course/:id" element={<CourseEdit />} />
