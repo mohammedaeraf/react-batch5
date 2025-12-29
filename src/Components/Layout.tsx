@@ -1,8 +1,9 @@
+import Footer from "./Footer";
+import Header from "./Header";
 import "./Layout.css";
-import Header from "./Components/Header";
-import Nav from "./Components/Nav";
-import Footer from "./Components/Footer";
-import MainSection from "./Components/MainSection";
+import MainSection from "./MainSection";
+import Nav from "./Nav";
+
 
 function Layout() {
   return (

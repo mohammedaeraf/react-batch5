@@ -44,7 +44,9 @@ function EmployeeDirectory() {
               position={emp.position}
               department={emp.department}
               salary={emp.salary}
-            />
+            >
+              <p>Some Description about Employee</p>
+            </EmployeeCard>
           </div>
         ))}
       </div>
