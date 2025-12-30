@@ -12,8 +12,7 @@ import CourseList4 from "./Components/CourseList4";
 import CourseAdd from "./Components/CourseAdd";
 import RegisterUser from "./Components/RegisterUser";
 import CourseEdit from "./Components/CourseEdit";
-import EmployeeCard from "./Components/EmployeeCard";
-import EmployeeCards from "./Components/EmployeeCards";
+
 
 function App() {
   return (
