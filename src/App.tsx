@@ -12,8 +12,7 @@ import CourseList4 from "./Components/CourseList4";
 import CourseAdd from "./Components/CourseAdd";
 import RegisterUser from "./Components/RegisterUser";
 import CourseEdit from "./Components/CourseEdit";
-import EmployeeCard from "./Components/EmployeeCard";
-import EmployeeCards from "./Components/EmployeeCards";
+import CustomerList from "./Components/CustomerList";
 
 function App() {
   return (
@@ -85,6 +84,11 @@ function App() {
                   </Link>
                 </li>
                 <li className="nav-item">
+                  <Link className="nav-link" to="/customers">
+                    Customers
+                  </Link>
+                </li>
+                <li className="nav-item">
                   <Link className="nav-link" to="/register">
                     Register
                   </Link>
@@ -101,6 +105,8 @@ function App() {
             <Route path="/add-course" element={<CourseAdd />} />
             <Route path="/edit-course/:id" element={<CourseEdit />} />
             <Route path="/users" element={<UserList2 />} />
+            <Route path="/customers" element={<CustomerList />} />
+
             <Route path="/posts" element={<PostList3 />} />
             <Route path="/employees" element={<EmployeeList />} />
             <Route path="/recipes" element={<RecipeList />} />

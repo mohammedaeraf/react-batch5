@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 /**
  * Employee type describes the shape of an employee object.
@@ -15,9 +15,24 @@ type Employee = {
  * Static employees shown before any fetch — keeps UI populated for demo.
  */
 const employeesStatic: Employee[] = [
-  { id: 1, employee_name: "Alice Johnson", employee_salary: "75000", employee_age: "29" },
-  { id: 2, employee_name: "Bob Smith", employee_salary: "68000", employee_age: "34" },
-  { id: 3, employee_name: "Clara Lee", employee_salary: "82000", employee_age: "27" },
+  {
+    id: 1,
+    employee_name: "Alice Johnson",
+    employee_salary: "75000",
+    employee_age: "29",
+  },
+  {
+    id: 2,
+    employee_name: "Bob Smith",
+    employee_salary: "68000",
+    employee_age: "34",
+  },
+  {
+    id: 3,
+    employee_name: "Clara Lee",
+    employee_salary: "82000",
+    employee_age: "27",
+  },
 ];
 
 function EmployeeList() {
@@ -32,7 +47,9 @@ function EmployeeList() {
    */
   const fetchEmployees = async () => {
     try {
-      const response = await fetch("https://dummy.restapiexample.com/api/v1/employees");
+      const response = await fetch(
+        "https://dummy.restapiexample.com/api/v1/employees"
+      );
       const data = await response.json();
 
       // API may return { status, data: [...] } or directly an array
