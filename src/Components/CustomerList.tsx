@@ -15,7 +15,7 @@ type Customer = {
 
 const CustomerList = () => {
   // API base URL for customers (replace with your own endpoint if needed)
-  const API_URL: string = "http://localhost:3000/customers";
+  const API_URL: string = "http://localhost:6000/customers";
 
   // `customers` state: holds the list of customers fetched from the API.
   const [customers, setCustomers] = useState<Customer[]>([]);
