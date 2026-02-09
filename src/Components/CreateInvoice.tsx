@@ -36,21 +36,13 @@ function CreateInvoice() {
   }, []);
 
   const fetchCustomers = async () => {
-    const res = await fetch("http://localhost:3000/customers", {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
-    const data = await res.json();
-    setCustomers(data);
+    const res = await fetch("http://localhost:3000/customers");
+    const responseData = await res.json();
+    setCustomers(responseData.data);
   };
 
   const fetchItems = async () => {
-    const res = await fetch("http://localhost:3000/items", {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
+    const res = await fetch("http://localhost:3000/items");
     const data = await res.json();
     setItems(data);
   };
@@ -69,7 +61,9 @@ function CreateInvoice() {
   };
 
   const removeItemRow = (index: number) => {
-    const updatedItems = invoiceItems.filter((_, i) => i !== index);
+    const updatedItems = invoiceItems.filter((item, i) => {
+      return i !== index;
+    });
     setInvoiceItems(updatedItems);
   };
 
@@ -104,72 +98,121 @@ function CreateInvoice() {
   };
 
   return (
-    <div style={{ padding: "20px" }}>
-      <h2>Create Invoice</h2>
-
-      <form onSubmit={handleSubmit}>
-        {/* Customer Selection */}
-        <div>
-          <label>Customer:</label>
-          <select
-            value={selectedCustomer}
-            onChange={(e) => setSelectedCustomer(e.target.value)}
-            required
-          >
-            <option value="">Select Customer</option>
-            {customers.map((customer) => (
-              <option key={customer._id} value={customer._id}>
-                {customer.name}
-              </option>
-            ))}
-          </select>
+    <div className="container py-4">
+      <div className="card shadow-sm">
+        <div className="card-header bg-primary text-white">
+          <h4 className="mb-0">Create Invoice</h4>
         </div>
+        <div className="card-body">
+          <form onSubmit={handleSubmit}>
+            {/* Customer Selection */}
+            <div className="form-group mb-4">
+              <label className="form-label fw-semibold">Customer:</label>
+              <select
+                className="form-select"
+                value={selectedCustomer}
+                onChange={(e) => setSelectedCustomer(e.target.value)}
+                required
+              >
+                <option value="">Select Customer</option>
+                {customers.map((customer) => (
+                  <option key={customer._id} value={customer._id}>
+                    {customer.name}
+                  </option>
+                ))}
+              </select>
+            </div>
 
-        <hr />
+            <hr />
 
-        {/* Invoice Items */}
-        <h3>Items</h3>
+            {/* Invoice Items */}
+            <h5 className="mt-4 mb-3">Invoice Items</h5>
 
-        {invoiceItems.map((line, index) => (
-          <div key={index} style={{ marginBottom: "10px" }}>
-            <select
-              value={line.item}
-              onChange={(e) => handleItemChange(index, "item", e.target.value)}
-              required
+            <div className="table-responsive">
+              <table className="table table-bordered table-hover">
+                <thead className="table-light">
+                  <tr>
+                    <th>Item</th>
+                    <th className="text-center" style={{ width: "120px" }}>
+                      Quantity
+                    </th>
+                    <th className="text-center" style={{ width: "100px" }}>
+                      Action
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {invoiceItems.map((line, index) => (
+                    <tr key={index}>
+                      <td>
+                        <select
+                          className="form-select form-select-sm"
+                          value={line.item}
+                          onChange={(e) =>
+                            handleItemChange(index, "item", e.target.value)
+                          }
+                          required
+                        >
+                          <option value="">Select Item</option>
+                          {items.map((item) => (
+                            <option key={item._id} value={item._id}>
+                              {item.name} (₹{item.rate})
+                            </option>
+                          ))}
+                        </select>
+                      </td>
+                      <td>
+                        <input
+                          type="number"
+                          className="form-control form-control-sm"
+                          min="1"
+                          value={line.quantity}
+                          onChange={(e) =>
+                            handleItemChange(
+                              index,
+                              "quantity",
+                              Number(e.target.value),
+                            )
+                          }
+                          required
+                        />
+                      </td>
+                      <td className="text-center">
+                        <button
+                          type="button"
+                          className="btn btn-danger btn-sm"
+                          onClick={() => removeItemRow(index)}
+                        >
+                          Remove
+                        </button>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+
+            <button
+              type="button"
+              className="btn btn-secondary btn-sm mb-4"
+              onClick={addNewItemRow}
             >
-              <option value="">Select Item</option>
-              {items.map((item) => (
-                <option key={item._id} value={item._id}>
-                  {item.name} (₹{item.rate})
-                </option>
-              ))}
-            </select>
-
-            <input
-              type="number"
-              min="1"
-              value={line.quantity}
-              onChange={(e) =>
-                handleItemChange(index, "quantity", Number(e.target.value))
-              }
-              placeholder="Quantity"
-              required
-            />
-
-            <button type="button" onClick={() => removeItemRow(index)}>
-              Remove
+              + Add Item
             </button>
-          </div>
-        ))}
 
-        <button type="button" onClick={addNewItemRow}>
-          + Add Item
-        </button>
+            <hr />
 
-        <hr />
-
-        <button type="submit">Create Invoice</button>
-      </form>
+            <div className="d-flex gap-2">
+              <button type="submit" className="btn btn-primary">
+                Create Invoice
+              </button>
+              <button type="reset" className="btn btn-outline-secondary">
+                Reset
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
     </div>
   );
 }
