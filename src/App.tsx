@@ -13,6 +13,7 @@ import CourseAdd from "./Components/CourseAdd";
 import RegisterUser from "./Components/RegisterUser";
 import CourseEdit from "./Components/CourseEdit";
 import CustomerList from "./Components/CustomerList";
+import CreateInvoice from "./Components/CreateInvoice";
 
 function App() {
   return (
@@ -89,8 +90,8 @@ function App() {
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link" to="/register">
-                    Register
+                  <Link className="nav-link" to="/create-invoice">
+                    Create Invoice
                   </Link>
                 </li>
               </ul>
@@ -114,6 +115,7 @@ function App() {
             <Route path="/counter" element={<Counter />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/register" element={<RegisterUser />} />
+            <Route path="/create-invoice" element={<CreateInvoice />} />
             {/* <Route path="/employees" element={<EmployeeCards />} /> */}
           </Routes>
         </main>
